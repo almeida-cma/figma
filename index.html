@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Figma - Para Desenvolvedores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #a259ff;
+        }
+
+        .header .icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            font-weight: 800;
+        }
+
+        .header h1 span {
+            color: #a259ff;
+        }
+
+        .header p {
+            color: #6c757d;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .badge {
+            background: #f0f0f0;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .badge.figma {
+            background: #a259ff;
+            color: white;
+        }
+
+        /* ===== SEÇÃO: SOBRE ===== */
+        .secao {
+            margin-bottom: 30px;
+        }
+
+        .secao h2 {
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #a259ff;
+            padding-left: 14px;
+        }
+
+        .secao p {
+            color: #2c3e50;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .secao .destaque {
+            background: #f8f0ff;
+            border-left: 4px solid #a259ff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .secao .destaque strong {
+            color: #7b2fbe;
+        }
+
+        /* ===== IMAGEM ILUSTRATIVA ===== */
+        .img-ilustrativa {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .img-ilustrativa img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .img-ilustrativa .legenda {
+            font-size: 0.7rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        /* ===== LINK OFICIAL ===== */
+        .links-oficiais {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .links-oficiais .link-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .links-oficiais .link-card:hover {
+            border-color: #a259ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(162, 89, 255, 0.15);
+        }
+
+        .links-oficiais .link-card .emoji {
+            font-size: 1.5rem;
+        }
+
+        .links-oficiais .link-card .texto small {
+            display: block;
+            font-size: 0.65rem;
+            color: #6c757d;
+        }
+
+        /* ===== PASSOS ===== */
+        .passos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .passo {
+            background: #f8f9fa;
+            padding: 14px 16px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .passo .num {
+            display: inline-block;
+            background: #a259ff;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+
+        .passo p {
+            font-size: 0.8rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* ===== VÍDEOS ===== */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .video-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        .video-card:hover {
+            border-color: #a259ff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(162, 89, 255, 0.12);
+        }
+
+        .video-card .thumb {
+            font-size: 2.5rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .video-card h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .video-card p {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+
+        .video-card .badge-video {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* ===== DESAFIO ===== */
+        .desafio-box {
+            background: #fff8f0;
+            border: 2px dashed #fd7e14;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 10px 0;
+        }
+
+        .desafio-box h3 {
+            color: #fd7e14;
+            font-size: 1rem;
+        }
+
+        .desafio-box p {
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
+        .desafio-box .btn-desafio {
+            display: inline-block;
+            background: #fd7e14;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            transition: all 0.3s;
+        }
+
+        .desafio-box .btn-desafio:hover {
+            background: #e0690a;
+            transform: scale(1.02);
+        }
+
+        /* ===== PUBLICAÇÃO ===== */
+        .publicacao-box {
+            background: #e8f5e9;
+            border-left: 4px solid #28a745;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .publicacao-box strong {
+            color: #155724;
+        }
+
+        /* ===== AJUDA ===== */
+        .ajuda-box {
+            background: linear-gradient(135deg, #f8f0ff, #fff0f5);
+            border: 2px solid #a259ff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .ajuda-box h3 {
+            color: #7b2fbe;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .ajuda-box p {
+            color: #2c3e50;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .ajuda-box .btn-ajuda {
+            display: inline-block;
+            background: #a259ff;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .ajuda-box .btn-ajuda:hover {
+            background: #7b2fbe;
+            transform: scale(1.02);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .passos {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .links-oficiais .link-card {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 18px 14px;
+            }
+
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .header .icon {
+                font-size: 2.5rem;
+            }
+
+            .passos {
+                grid-template-columns: 1fr;
+            }
+
+            .ajuda-box {
+                padding: 16px;
+            }
+
+            .ajuda-box h3 {
+                font-size: 1rem;
+            }
+
+            .desafio-box {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <span class="icon">🎨</span>
+        <h1>Figma</h1>
+        <p>Design de Interfaces para Desenvolvedores</p>
+        <div class="badge-group">
+            <span class="badge figma">🎯 Design</span>
+            <span class="badge">💻 Prototipagem</span>
+            <span class="badge">🛠️ Wireframes</span>
+            <span class="badge">🚀 Colaboração</span>
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: SOBRE ===== -->
+    <div class="secao">
+        <h2>💡 O que é Figma?</h2>
+        <p>
+            <strong>Figma</strong> é uma ferramenta de <strong>design de interfaces</strong> baseada na nuvem,
+            que permite criar <strong>wireframes, protótipos e layouts</strong> de forma colaborativa.
+            É amplamente utilizada por designers e desenvolvedores para planejar a experiência do usuário
+            antes de escrever qualquer código.
+        </p>
+
+        <div class="img-ilustrativa">
+            <img src="https://help.figma.com/hc/article_attachments/26978261914391" alt="Interface do Figma">
+            <div class="legenda">🎨 Figma: design colaborativo em tempo real</div>
+        </div>
+
+        <div class="destaque">
+            <strong>🎯 Para Desenvolvedores:</strong> Figma permite que você visualize especificações de design,
+            exporte assets (ícones, imagens, cores) e entenda a estrutura do layout antes de codificar.
+            Isso reduz retrabalho e alinha expectativas entre design e desenvolvimento.
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: LINK OFICIAL ===== -->
+    <div class="secao">
+        <h2>🔗 Link Oficial</h2>
+        <div class="links-oficiais">
+            <a href="https://www.figma.com/" target="_blank" class="link-card">
+                <span class="emoji">🌐</span>
+                <div class="texto">
+                    <strong>Figma.com</strong>
+                    <small>Site oficial da ferramenta</small>
+                </div>
+                <span style="color:#a259ff;">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: CRIAR CONTA ===== -->
+    <div class="secao">
+        <h2>📝 Como Criar uma Conta Gratuita</h2>
+        <p>Siga os passos abaixo para criar sua conta Figma gratuitamente:</p>
+
+        <div class="passos">
+            <div class="passo">
+                <span class="num">1</span>
+                <p>Acesse o site oficial <br><strong>figma.com</strong></p>
+            </div>
+            <div class="passo">
+                <span class="num">2</span>
+                <p>Clique em <strong>"Sign up"</strong> <br>no canto superior direito</p>
+            </div>
+            <div class="passo">
+                <span class="num">3</span>
+                <p>Use e-mail ou <br><strong>conta Google</strong></p>
+            </div>
+            <div class="passo">
+                <span class="num">4</span>
+                <p>Confirme o e-mail <br>e <strong>comece a usar!</strong></p>
+            </div>
+        </div>
+
+        <div class="destaque">
+            💡 <strong>Dica:</strong> A versão <strong>gratuita</strong> permite criar até <strong>3 projetos</strong> e colaborar com
+            até <strong>2 editores</strong> simultâneos. Já é suficiente para estudar e criar protótipos!
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: DEMONSTRAÇÕES ===== -->
+    <div class="secao">
+        <h2>🎬 Demonstrações</h2>
+        <p>Assista aos vídeos abaixo para aprender os fundamentos do Figma:</p>
+
+        <div class="videos-grid">
+
+            <!-- Vídeo 1 -->
+            <a href="https://youtu.be/69PngSL6XN4" target="_blank" class="video-card">
+                <span class="thumb">🎥</span>
+                <h4>Wireframes e Protótipos com Figma</h4>
+                <p>Thiago Veigah - Introdução prática</p>
+                <span class="badge-video">▶️ YouTube</span>
+            </a>
+
+            <!-- Vídeo 2 -->
+            <a href="https://youtu.be/J6pP0TFljpo" target="_blank" class="video-card">
+                <span class="thumb">🎥</span>
+                <h4>Aprenda Figma Grátis</h4>
+                <p>Edu Sites - Interfaces profissionais do zero</p>
+                <span class="badge-video">▶️ YouTube</span>
+            </a>
+
+            <!-- Vídeo 3 (ocupa 2 colunas) -->
+            <a href="https://youtu.be/uSUBC_kU5Cg" target="_blank" class="video-card" style="grid-column: 1 / -1;">
+                <span class="thumb">🎥</span>
+                <h4>Navegar Entre Páginas em Protótipo no Figma</h4>
+                <p>Panamericana Escola de Arte e Design - Dica prática</p>
+                <span class="badge-video">▶️ YouTube</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: DESAFIO ===== -->
+    <div class="secao">
+        <h2>🏆 Desafio</h2>
+        <div class="desafio-box">
+            <h3>📄 Desafio_Figma.pdf</h3>
+            <p>
+                Baixe o arquivo com as instruções do desafio e comece a praticar!
+            </p>
+            <a href="Desafio_Figma.pdf" target="_blank" class="btn-desafio">
+                📥 Abrir Desafio
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: PUBLICAR ===== -->
+    <div class="secao">
+        <h2>🌍 Publicar seu Protótipo</h2>
+        <div class="publicacao-box">
+            <p>
+                <strong>📌 Passo a passo para publicar seu protótipo:</strong>
+            </p>
+            <ol style="margin: 8px 0 8px 20px; color:#2c3e50; line-height:1.8; font-size:0.9rem;">
+                <li>No Figma, clique em <strong>"Share"</strong> (compartilhar)</li>
+                <li>Altere a opção para <strong>"Anyone with the link"</strong> (qualquer pessoa com o link)</li>
+                <li>Selecione a permissão <strong>"Can view"</strong> (pode visualizar)</li>
+                <li>Copie o link gerado e compartilhe!</li>
+            </ol>
+            <p style="font-size:0.85rem; color:#155724; margin-top:4px;">
+                ✅ Pronto! Seu protótipo estará disponível para qualquer pessoa, sem necessidade de autorização.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== SEÇÃO: AJUDA ===== -->
+    <div class="secao">
+        <div class="ajuda-box">
+            <h3>🤔 Perdido? Precisa de uma mãozinha?</h3>
+            <p>
+                Não se preocupe! Criar protótipos pode parecer desafiador no início.
+                <br>
+                <strong>Tente resolver sozinho</strong> antes de olhar a sugestão abaixo:
+            </p>
+            <a href="sugestao.png" target="_blank" class="btn-ajuda">
+                💡 Ver Sugestão
+            </a>
+            <p style="font-size:0.75rem; color:#6c757d; margin-top:10px;">
+                ⚡ Dica: Tente primeiro! A sugestão é apenas um guia.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <p>🎨 Figma - Design de Interfaces para Desenvolvedores</p>
+        <p style="font-size:0.65rem; opacity:0.7;">Todos os links abrem em nova aba | Conteúdo para fins educacionais</p>
+    </div>
+
+</div>
+
+</body>
+</html>
